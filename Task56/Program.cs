@@ -21,13 +21,16 @@ namespace HomeWork8
             int n = new Random().Next(3, 7);
             int m = new Random().Next(3, 7);
             int[,] array = new int[n, m];
+            int[] array2 = new int[n];
             FillArray(array);
             Console.WriteLine("Начальный Массив");
             PrintArray(array);
-            
-            
-            PrintArray2(FindSumStringElements(array));
-            Console.WriteLine(MinSumString(OrderedArray(array)));
+            array2 = FindSumStringElements(array, array2);
+            Console.WriteLine("Сумма всех элементов в строках");
+            PrintArray2(array2);
+            Console.WriteLine("");
+            Console.WriteLine("Номер строки с минимальной суммой элементов:");
+            MinSumString(array2);
             
         }
         static void FillArray(int[,] array)
@@ -53,7 +56,7 @@ namespace HomeWork8
             }
         }
 
-        static int[] FindSumStringElements(int[,] array)
+        static int[] FindSumStringElements(int[,] array, int[] array2)
         {
             int[] sum = new int[array.GetLength(0)];
             
@@ -67,18 +70,12 @@ namespace HomeWork8
                 }
                 sum[i] = sum1;
             }
-            for (int i = 0; i < sum.Length; i++)
-            {
-                int min = sum[i];
-                if (array[i+1] < array[min]) min = i;
-            }
-
-            return 
+            return sum;
         }
 
         static void PrintArray2(int[] array)
         {
-            for (int i = 0; i < array.GetLength(0); i++)
+            for (int i = 0; i < array.Length; i++)
             {
 
                     Console.Write(array[i] + " ");
@@ -86,16 +83,18 @@ namespace HomeWork8
             }
         }
 
-        static int MinSumString(int[] array)
+        static void MinSumString(int[] array)
         {
             int min = 0;
-            for (int i = 1; i <= array.Length; i++)
+            for (int i = 0; i < array.Length; i++)
             {
-                min = array[i-1];
+                
                 if (array[i] < array[min]) min = i;
+                
             }
+            Console.WriteLine(min+1);
             
-            return min;
+            
         }
     }
 }
