@@ -20,17 +20,17 @@ namespace HomeWork8
         {
             int n = new Random().Next(3, 7);
             int m = new Random().Next(3, 7);
-            int[,] array = new int[n, m];
-            int[] array2 = new int[n];
-            FillArray(array);
+            int[,] array2 = new int[n, m];
+            int[] array1 = new int[n];
+            FillArray(array2);
             Console.WriteLine("Начальный Массив");
-            PrintArray(array);
-            array2 = FindSumStringElements(array, array2);
-            Console.WriteLine("Сумма всех элементов в строках");
             PrintArray2(array2);
+            array1 = FindSumStringElements(array2, array1);
+            Console.WriteLine("Сумма всех элементов в строках");
+            PrintArray1(array1);
             Console.WriteLine("");
             Console.WriteLine("Номер строки с минимальной суммой элементов:");
-            MinSumString(array2);
+            MinSumString(array1);
             
         }
         static void FillArray(int[,] array)
@@ -44,7 +44,7 @@ namespace HomeWork8
             }
         }
 
-        static void PrintArray(int[,] array)
+        static void PrintArray2(int[,] array)
         {
             for (int i = 0; i < array.GetLength(0); i++)
             {
@@ -73,13 +73,11 @@ namespace HomeWork8
             return sum;
         }
 
-        static void PrintArray2(int[] array)
+        static void PrintArray1(int[] array)
         {
             for (int i = 0; i < array.Length; i++)
             {
-
                     Console.Write(array[i] + " ");
-                
             }
         }
 
@@ -88,13 +86,9 @@ namespace HomeWork8
             int min = 0;
             for (int i = 0; i < array.Length; i++)
             {
-                
                 if (array[i] < array[min]) min = i;
-                
             }
             Console.WriteLine(min+1);
-            
-            
         }
     }
 }
