@@ -41,6 +41,7 @@ namespace HomeWork8
             int m = new Random().Next(3, 7);
             int[,] array1 = new int[n, m];
             int[,] array2 = new int[n,m];
+            int[,] multiplyItem = new int[n,m];
             FillArray(array1);
             Console.WriteLine("Начальный Массив 1");
             PrintArray(array1);
@@ -48,14 +49,10 @@ namespace HomeWork8
             Console.WriteLine("Начальный Массив 2");
             PrintArray(array2);
             Console.WriteLine("Массив состоящий из произведений элементов массива 1 и 2:");
-            MultiplicationArraysItem(array1, array2);
-            PrintArray(array1);
-
-
-
-            
-            
+            multiplyItem = MultiplicationArraysItem(array1, array2);
+            PrintArray(multiplyItem);
         }
+
         static void FillArray(int[,] array)
         {
             for (int i = 0; i < array.GetLength(0); i++)
@@ -79,17 +76,17 @@ namespace HomeWork8
             }
         }
         
-        static void MultiplicationArraysItem(int[,] array1, int[,] array2)
+        static int[,] MultiplicationArraysItem(int[,] array1, int[,] array2)
         {
+            int[,] multiplyItem = new int[array1.GetLength(0),array1.GetLength(1)];
             for (int i = 0; i < array1.GetLength(0); i++)
             {
                 for (int j = 0; j < array1.GetLength(1); j++)
                 {
-                    array1[i, j] *= array2[i,j];
+                    multiplyItem[i, j] = array1[i,j] * array2[i,j];
                 }
             }
+            return multiplyItem;
         }
-
-        
     }
 }
